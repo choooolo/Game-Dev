@@ -1,0 +1,64 @@
+[gd_scene load_steps=8 format=3 uid="uid://qy6hau6qdw5i"]
+
+[ext_resource type="Script" uid="uid://os14h3u60hba" path="res://label_3d.gd" id="1_noarx"]
+[ext_resource type="Script" uid="uid://capmlckn5rk2d" path="res://eyes.gd" id="2_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tk4"]
+albedo_color = Color(2.2128582, 1.5794667, 3.048935, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_r3fl7"]
+material = SubResource("StandardMaterial3D_a0tk4")
+size = Vector2(25, 10)
+
+[sub_resource type="SphereMesh" id="SphereMesh_a202f"]
+radius = 0.545
+height = 0.492
+is_hemisphere = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_noarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r3fl7"]
+albedo_color = Color(0, 0, 0, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(0.99999994, 0, 0, 0, 1.0000004, 0, 0, 0, 0.99999994, 0.020053864, -0.016087413, -0.06709623)
+layers = 31
+pixel_size = 0.1195
+alpha_antialiasing_edge = 0.02
+texture_filter = 1
+text = "Hello World"
+font_size = 34
+outline_size = 16
+script = ExtResource("1_noarx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Label3D"]
+transform = Transform3D(0.90209603, -0.053394005, 0.42821953, 0.18450417, 0.9447661, -0.27087882, -0.39010403, 0.3233671, 0.8621211, 0.7907176, 5.6641693, 3.6814294)
+
+[node name="floor" type="MeshInstance3D" parent="Label3D"]
+transform = Transform3D(1.0000001, -3.7252903e-09, 1.4901161e-08, -3.7252903e-09, 1, -2.9802322e-08, -2.9802322e-08, 0, 1.0000001, -0.043391943, -2.0660822, 0.2627926)
+mesh = SubResource("PlaneMesh_r3fl7")
+
+[node name="eyes" type="MeshInstance3D" parent="Label3D"]
+transform = Transform3D(1, 0, 0, 0, -0.101421095, -0.99484396, 0, 0.9948452, -0.10142094, 4.231372, 0.36540133, 0.015106804)
+mesh = SubResource("SphereMesh_a202f")
+script = ExtResource("2_noarx")
+
+[node name="iris" type="MeshInstance3D" parent="Label3D/eyes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.50000024, 0, 0, 0, 0.5, 0.005949974, 0.34647286, 0.008843482)
+mesh = SubResource("SphereMesh_noarx")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3fl7")
+
+[node name="eyes" type="MeshInstance3D" parent="Label3D/eyes"]
+transform = Transform3D(0.99988675, 0.014918629, 0.002070658, -0.015043833, 0.9959037, 0.089174256, -0.00073181686, -0.08919546, 0.9960142, 1.2328143, -0.0048233606, 0.040203363)
+mesh = SubResource("SphereMesh_a202f")
+script = ExtResource("2_noarx")
+
+[node name="iris" type="MeshInstance3D" parent="Label3D/eyes/eyes"]
+transform = Transform3D(0.5, 0, 0, 0, 0.50000024, 0, 0, 0, 0.5, 0.005949974, 0.34647286, 0.008843482)
+mesh = SubResource("SphereMesh_noarx")
+surface_material_override/0 = SubResource("StandardMaterial3D_r3fl7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24820948, 1.2890658, 17.442038)
