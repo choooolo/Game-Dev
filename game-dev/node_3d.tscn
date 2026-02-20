@@ -24,6 +24,7 @@ albedo_color = Color(0, 0, 0, 1)
 
 [node name="Label3D" type="Label3D" parent="."]
 transform = Transform3D(0.99999994, 0, 0, 0, 1.0000004, 0, 0, 0, 0.99999994, 0.020053864, -0.016087413, -0.06709623)
+visible = false
 layers = 31
 pixel_size = 0.1195
 alpha_antialiasing_edge = 0.02
@@ -60,5 +61,5 @@ transform = Transform3D(0.5, 0, 0, 0, 0.50000024, 0, 0, 0, 0.5, 0.005949974, 0.3
 mesh = SubResource("SphereMesh_noarx")
 surface_material_override/0 = SubResource("StandardMaterial3D_r3fl7")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.24820948, 1.2890658, 17.442038)
+[node name="Camera3D" type="Camera3D" parent="Label3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.99999976, 0, 0, 0, 1.0000001, 0.22815564, 1.3051529, 17.509136)
