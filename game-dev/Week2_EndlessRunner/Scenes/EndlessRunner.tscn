@@ -59,6 +59,14 @@ surface_material_override/0 = SubResource("StandardMaterial3D_m2sit")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
 shape = SubResource("BoxShape3D_bxxpu")
 
+[node name="LevelManager" type="Node" parent="." unique_id=180328814]
+script = ExtResource("2_ewi8e")
+
+[node name="LevelText" type="Label3D" parent="." unique_id=1595023779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+text = "LEVEL 1"
+font_size = 9
+
 [node name="Spike_Template" parent="." unique_id=2080500473 instance=ExtResource("1_m2sit")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 10)
 visible = false
@@ -127,9 +135,6 @@ surface_material_override/0 = SubResource("StandardMaterial3D_lug61")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Spike_Level1_3" unique_id=1297291263]
 shape = SubResource("BoxShape3D_hvi8i")
 
-[node name="LevelManager" type="Node" parent="." unique_id=180328814]
-script = ExtResource("2_ewi8e")
-
 [node name="Obstacle_Level2" type="Area3D" parent="." unique_id=1958447963]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 65)
 script = ExtResource("1_enp2k")
@@ -154,11 +159,6 @@ shape = SubResource("BoxShape3D_hvi8i")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle2" unique_id=1542144780]
 transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.4627058, 0.1, 0.24070358)
 mesh = SubResource("BoxMesh_bxxpu")
-
-[node name="LevelText" type="Label3D" parent="." unique_id=1595023779]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-text = "LEVEL 1"
-font_size = 9
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785146761]
 transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)

@@ -3,6 +3,7 @@ extends CharacterBody3D
 var speed = 7.0
 var jump_velocity = 4.0
 var gravity = 9.8
+var should_reset = false  # Add this flag
 
 func _physics_process(delta):
 	# Add gravity
@@ -14,23 +15,28 @@ func _physics_process(delta):
 		velocity.y = jump_velocity
 		print("JUMP!")
 
-	# AUTO-RUN FORWARD
-	velocity.z = speed  # This runs forward
-	print("Running forward. Z position: ", position.z)
+	# AUTO-RUN FORWARD - but only if not resetting
+	if not should_reset:
+		velocity.z = speed
+	else:
+		velocity.z = 0
+		should_reset = false
 
-	# Left/Right movement with DEBUG
+	# Left/Right movement
 	var horizontal = 0.0
 	
 	if Input.is_action_pressed("move_right"):
 		horizontal -= 1
-		print("LEFT key detected!")  # See if this prints
 	if Input.is_action_pressed("move_left"):
 		horizontal += 1
-		print("RIGHT key detected!")  # See if this prints
 	
 	velocity.x = horizontal * 3.0
-	
-	if horizontal != 0:
-		print("Moving horizontally: ", horizontal)
 
 	move_and_slide()
+
+# Add this function to be called from LevelManager
+func reset_position():
+	print("Player resetting position")
+	position = Vector3(0, 1, 0)
+	velocity = Vector3.ZERO
+	should_reset = true
