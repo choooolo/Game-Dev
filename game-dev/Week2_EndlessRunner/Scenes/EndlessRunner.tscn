@@ -1,0 +1,168 @@
+[gd_scene format=3 uid="uid://bisjiehowrw1s"]
+
+[ext_resource type="Script" uid="uid://3v7wc1kf4ssn" path="res://Week2_EndlessRunner/Scripts/Player.gd" id="1_bxxpu"]
+[ext_resource type="Script" uid="uid://dfdviijeq7xnm" path="res://Week2_EndlessRunner/Scripts/Spike.gd" id="1_enp2k"]
+[ext_resource type="PackedScene" uid="uid://vh7p4308jnnl" path="res://Week2_EndlessRunner/Assets/Spike.tscn" id="1_m2sit"]
+[ext_resource type="Script" uid="uid://cjy5qdglopk0c" path="res://Week2_EndlessRunner/Scripts/LevelManager.gd" id="2_ewi8e"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bx86f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_enp2k"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ewi8e"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m2sit"]
+albedo_color = Color(0.3245714, 0.616379, 0.22658296, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bxxpu"]
+size = Vector3(20, 0.2, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_m2sit"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lug61"]
+albedo_color = Color(0.96774834, 0.32109022, 0.6711698, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hvi8i"]
+size = Vector3(2, 0.5, 0.5)
+
+[sub_resource type="PrismMesh" id="PrismMesh_md58d"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bxxpu"]
+
+[node name="Node3D" type="Node3D" unique_id=281348290]
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1600864125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_bxxpu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=36451835]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.5, 0)
+mesh = SubResource("BoxMesh_bx86f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1367098161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_enp2k")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=848407921]
+transform = Transform3D(-0.99999994, 4.5753548e-09, -8.730296e-08, 0, 0.9986295, 0.052335955, 8.742277e-08, 0.05233596, -0.99862945, 0, 2, -3)
+current = true
+
+[node name="Ground" type="StaticBody3D" parent="." unique_id=1720058573]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Ground" unique_id=1027756887]
+transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 100, 0, 0, 25)
+mesh = SubResource("BoxMesh_ewi8e")
+surface_material_override/0 = SubResource("StandardMaterial3D_m2sit")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground" unique_id=1611600316]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25)
+shape = SubResource("BoxShape3D_bxxpu")
+
+[node name="Spike_Template" parent="." unique_id=2080500473 instance=ExtResource("1_m2sit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 10)
+visible = false
+
+[node name="Spike_Level2_Cluster1" parent="." unique_id=1747388841 instance=ExtResource("1_m2sit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 45)
+
+[node name="Spike_Level2_Cluster2" parent="." unique_id=1367985323 instance=ExtResource("1_m2sit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 60)
+
+[node name="Spike_Level2_Cluster1_B" parent="." unique_id=763832223 instance=ExtResource("1_m2sit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 45.3)
+
+[node name="Spike_Level2_Cluster1_C" parent="." unique_id=1165100036 instance=ExtResource("1_m2sit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 45.3)
+
+[node name="Spike_Level2_Single" parent="." unique_id=818211301 instance=ExtResource("1_m2sit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.2, 50)
+
+[node name="Obstacle" type="Area3D" parent="." unique_id=941378874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 10)
+script = ExtResource("1_enp2k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle" unique_id=1267368335]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.1, 15)
+mesh = SubResource("BoxMesh_m2sit")
+surface_material_override/0 = SubResource("StandardMaterial3D_lug61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle" unique_id=1737644797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 15)
+shape = SubResource("BoxShape3D_hvi8i")
+
+[node name="Spike_Level1_1" type="Area3D" parent="." unique_id=438913870]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 10)
+script = ExtResource("1_enp2k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spike_Level1_1" unique_id=1617037250]
+transform = Transform3D(0.3, 0, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0.1, 0)
+mesh = SubResource("PrismMesh_md58d")
+surface_material_override/0 = SubResource("StandardMaterial3D_lug61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spike_Level1_1" unique_id=1956682261]
+shape = SubResource("BoxShape3D_hvi8i")
+
+[node name="Spike_Level1_2" type="Area3D" parent="." unique_id=1894699335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 20)
+script = ExtResource("1_enp2k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spike_Level1_2" unique_id=1260594308]
+transform = Transform3D(0.3, 0, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0.1, 0)
+mesh = SubResource("PrismMesh_md58d")
+surface_material_override/0 = SubResource("StandardMaterial3D_lug61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spike_Level1_2" unique_id=1251938462]
+shape = SubResource("BoxShape3D_hvi8i")
+
+[node name="Spike_Level1_3" type="Area3D" parent="." unique_id=922016876]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 30)
+script = ExtResource("1_enp2k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spike_Level1_3" unique_id=1141993164]
+transform = Transform3D(0.3, 0, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0.1, 0)
+mesh = SubResource("PrismMesh_md58d")
+surface_material_override/0 = SubResource("StandardMaterial3D_lug61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Spike_Level1_3" unique_id=1297291263]
+shape = SubResource("BoxShape3D_hvi8i")
+
+[node name="LevelManager" type="Node" parent="." unique_id=180328814]
+script = ExtResource("2_ewi8e")
+
+[node name="Obstacle_Level2" type="Area3D" parent="." unique_id=1958447963]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0.2, 65)
+script = ExtResource("1_enp2k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle_Level2" unique_id=1079168504]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.10000001, 0.27186775)
+shape = SubResource("BoxShape3D_hvi8i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle_Level2" unique_id=1285895997]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.10000001, 0.27186775)
+mesh = SubResource("BoxMesh_bxxpu")
+
+[node name="Obstacle2" type="Area3D" parent="." unique_id=708468179]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 60.32438)
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle2" unique_id=1479887085]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4627058, 0.1, 0.24070358)
+shape = SubResource("BoxShape3D_hvi8i")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle2" unique_id=1542144780]
+transform = Transform3D(2, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.4627058, 0.1, 0.24070358)
+mesh = SubResource("BoxMesh_bxxpu")
+
+[node name="LevelText" type="Label3D" parent="." unique_id=1595023779]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+text = "LEVEL 1"
+font_size = 9
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=785146761]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1850539327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+light_energy = 5.0

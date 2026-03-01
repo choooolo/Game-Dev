@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://vh7p4308jnnl"]
+
+[ext_resource type="Script" uid="uid://dfdviijeq7xnm" path="res://Week2_EndlessRunner/Scripts/Spike.gd" id="1_hqjss"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_md58d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lug61"]
+albedo_color = Color(0.96774834, 0.32109022, 0.6711698, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hvi8i"]
+size = Vector3(0.3, 0.5, 0.3)
+
+[node name="Spike_Template" type="Area3D" unique_id=2080500473]
+script = ExtResource("1_hqjss")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=124311176]
+transform = Transform3D(0.3, 0, 0, 0, 0.5, 0, 0, 0, 0.3, 0, 0.1, 0)
+mesh = SubResource("PrismMesh_md58d")
+surface_material_override/0 = SubResource("StandardMaterial3D_lug61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2136026125]
+shape = SubResource("BoxShape3D_hvi8i")
