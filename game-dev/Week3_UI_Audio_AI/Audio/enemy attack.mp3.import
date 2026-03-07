@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c36sol2vm2x2w"
+path="res://.godot/imported/enemy attack.mp3-7f25e183f3f7dea9833594e58501d737.mp3str"
+
+[deps]
+
+source_file="res://Week3_UI_Audio_AI/Audio/enemy attack.mp3"
+dest_files=["res://.godot/imported/enemy attack.mp3-7f25e183f3f7dea9833594e58501d737.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

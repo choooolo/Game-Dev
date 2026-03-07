@@ -1,0 +1,121 @@
+[gd_scene format=3 uid="uid://ko2wi3nnyg0b"]
+
+[ext_resource type="Script" uid="uid://dg6uac0ntbvqk" path="res://Week3_UI_Audio_AI/Scripts/Player.gd" id="1_swrn0"]
+[ext_resource type="Script" uid="uid://b5d082dvh2jcu" path="res://Week3_UI_Audio_AI/Scripts/UI.gd" id="2_1m3fx"]
+[ext_resource type="AudioStream" uid="uid://c2pvyquvf31at" path="res://Week3_UI_Audio_AI/Audio/music.mp3" id="3_o7bl5"]
+[ext_resource type="PackedScene" uid="uid://cetwaqfyka3rc" path="res://Week3_UI_Audio_AI/Scenes/Enemy.tscn" id="4_kbl88"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gh3cm"]
+albedo_color = Color(0.34100002, 0.62, 0.34565002, 0.8156863)
+
+[sub_resource type="BoxMesh" id="BoxMesh_swrn0"]
+material = SubResource("StandardMaterial3D_gh3cm")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1m3fx"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8cq0i"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7bl5"]
+
+[sub_resource type="Gradient" id="Gradient_swrn0"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1m3fx"]
+gradient = SubResource("Gradient_swrn0")
+
+[node name="Node3D" type="Node3D" unique_id=470418576]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1750068720]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D" unique_id=2024421367]
+transform = Transform3D(30, 0, 0, 0, 0.2, 0, 0, 0, 30, 0, 0, 0)
+mesh = SubResource("BoxMesh_swrn0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=636324759]
+transform = Transform3D(30, 0, 0, 0, 0.2, 0, 0, 0, 30, 0, 0, 0)
+shape = SubResource("BoxShape3D_1m3fx")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1135287101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_swrn0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1400061740]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.5, 0)
+mesh = SubResource("CapsuleMesh_8cq0i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=1776803779]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_o7bl5")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=413767626]
+transform = Transform3D(1, 0, 0, 0, 0.9999863, 0.005235964, 0, -0.005235964, 0.9999863, 0, 2, 4)
+current = true
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="Player" unique_id=2009945197]
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=924978411]
+script = ExtResource("2_1m3fx")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI" unique_id=1717836359]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 220.0
+offset_bottom = 50.0
+value = 100.0
+texture_progress = SubResource("GradientTexture2D_1m3fx")
+tint_under = Color(0.4180398, 8.8440254e-07, 1.92523e-07, 1)
+tint_progress = Color(1, 0, 0, 1)
+
+[node name="HealthLabel" type="Label" parent="UI/TextureProgressBar" unique_id=863065849]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 20.0
+offset_right = 322.0
+offset_bottom = 43.0
+theme_override_font_sizes/font_size = 20
+text = "HP: 100/100"
+
+[node name="ScoreLabel" type="Label" parent="UI" unique_id=1835984063]
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 81.0
+offset_bottom = 83.0
+text = "Score: 0"
+
+[node name="PauseMenu" type="Panel" parent="UI" unique_id=1267326439]
+offset_left = 400.0
+offset_top = 50.0
+offset_right = 440.0
+offset_bottom = 90.0
+
+[node name="IntroLabel" type="Label" parent="UI" unique_id=1831618301]
+offset_left = 300.0
+offset_top = 200.0
+offset_right = 630.0
+offset_bottom = 223.0
+text = "WELCOME TO WEEK 3! Press SPACE to start"
+horizontal_alignment = 1
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="." unique_id=978912560]
+stream = ExtResource("3_o7bl5")
+autoplay = true
+bus = &"Music "
+area_mask = 1025
+
+[node name="CharacterBody3D" parent="." unique_id=545991430 instance=ExtResource("4_kbl88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, 0)
+
+[node name="CharacterBody3D3" parent="." unique_id=1978066116 instance=ExtResource("4_kbl88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -5)
+
+[node name="CharacterBody3D4" parent="." unique_id=1604444533 instance=ExtResource("4_kbl88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, -5)
+
+[node name="CharacterBody3D2" parent="." unique_id=1204152711 instance=ExtResource("4_kbl88")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 5)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=479023283]
+transform = Transform3D(0.70710677, -0.49999997, 0.49999997, 0, 0.70710677, 0.70710677, -0.70710677, -0.49999997, 0.49999997, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1064801396]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+light_energy = 5.0
