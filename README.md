@@ -38,10 +38,14 @@ WEEK 1
 
 
 Week2
+
+
 <img width="200px" height="150px" alt="image" src="https://github.com/user-attachments/assets/1236ba6d-06b4-4560-8b5e-3f6fa3200951"/>
 
 
 Week3
+
+
 <img width="200px" height="150px" alt="image" src="https://github.com/user-attachments/assets/9d095bc8-ff99-4830-863a-ca2188fe9b86" />
 <img width="200px" height="150px" alt="image" src="https://github.com/user-attachments/assets/621c4ff2-a806-4abc-b49e-7999a67ebb15" />
 
