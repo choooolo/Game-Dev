@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bw56lda02jvx4"]
+
+[ext_resource type="PackedScene" uid="uid://qyxyfw53t5t5" path="res://Week4_LocalMultiplayer/Scenes/Player.tscn" id="1_sgecu"]
+
+[node name="Node2D" type="Node2D" unique_id=2099387553]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1601001428]
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.24405202, 0.24405205, 0.24405202, 1)
+
+[node name="CharacterBody2D" parent="." unique_id=1924967525 instance=ExtResource("1_sgecu")]
+position = Vector2(64, 324)
+
+[node name="CharacterBody2D2" parent="." unique_id=1909243749 instance=ExtResource("1_sgecu")]
+position = Vector2(1089, 324)
+player_id = 2
